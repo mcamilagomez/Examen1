@@ -1,0 +1,36 @@
+@startuml
+' clase principal en el que se va a calcular el area de un polígono regular que es la multiplicación 
+' del apotema con el semiperímetro. 
+class CalcularArea { 
+    multiplicación() 
+}
+' clase en la que se calculará el semiperímetro de la figura, este se calcula sumando todos sus lados y dividirlo entre 2
+class semiperímetro{  
+    'calcularsemipermitro viene siendo el calculo que se debe realizar para calcular lo que necesitamos
+    calcularsemiperimetro()
+}
+'el apotema es la distancia de cualquier de sus lados al centro del polígono.
+'Aquí tenemos la clase apotema en el que va a calcular este resultado
+class apotema{
+    anguloCentral: int 
+    calculoapotema()
+} 
+'esta clase es necesaria para hallar el apotema y el semiperimetro ya que ambos necesitan de ella
+Class nLados{
+    'numeroL es la cantidad de lados que tiene la figura 
+    numeroL: int 
+    'esta es la medida que tiene cada lado
+    medida: int 
+}
+
+'esto son los códigos para implementar las flechas
+'el calculo del area necesita del semiperimetro para poder hallar el resultado
+CalcularArea --* semiperímetro  
+'El cálculo del área necesita(depende) del apotema para poder hallar el resultado
+CalcularArea --* apotema
+'El semiperímetro hereda de nLados para poder realizar sus cálculos 
+semiperímetro --|> nLados
+'El apotema hereda de nLados para poder realizar sus cálculos y hallar el resultado final. 
+apotema --|> nLados 
+
+@enduml
